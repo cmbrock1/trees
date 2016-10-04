@@ -14,25 +14,22 @@ void initNode(node *n){
     n->left = NULL;
     n->right = NULL;
     n->key = NULL;
-    n->val = NULL;
 }
-node *newNode(value *v){
+node *newNode(void){
     node *n;
     if ((n = malloc(sizeof(node))) == 0)
         Fatal("out of memory\n");
     initNode(n);
-    n->val = v;
     return n;
 }
-node *newTreeNode(value *v,char *key){
+node *newTreeNode(char *key){
     node *n;
     if ((n = malloc(sizeof(node))) == 0)
         Fatal("out of memory\n");
     initNode(n);
-    n->val = v;
     n->key = key;
     return n;
 }
 void displayNode(node *n,FILE *fp){
-    displayValue(fp,n->val);
+    fprintf(fp,"key = %s",n->key);
 }

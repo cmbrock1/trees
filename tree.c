@@ -31,8 +31,7 @@ bool EmptyTree(tree *t){
         return false;
 }
 static node *DupNode(node *n){
-    node *dupNode = newNode(n->val);
-    dupNode->val = n->val;
+    node *dupNode = newNode();
     dupNode->left = NULL;
     dupNode->right = NULL;
     return dupNode;
@@ -140,7 +139,6 @@ bool Delete(tree *t,char *key){
                         temp = temp->right;
                     }
                 delNode->key = temp->key;
-                delNode->val = temp->val;
                 if(back == delNode)
                     back->left = temp->left;
                     else
