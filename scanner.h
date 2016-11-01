@@ -1,3 +1,4 @@
+/* This file was given to us by Dr. Lusth */
 #ifndef SCANNER_H
 #define SCANNER_H
 /* VERSION 1.2

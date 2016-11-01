@@ -1,7 +1,7 @@
 /*******************************************************************
-*   avlTree.c
+*   avl.c
 *   Cameron Brock
-*   Programming Assignment 1 calculon
+*   Programming Assignment 2 trees
 *
 *   This program is entirely my own work
 *******************************************************************/
@@ -11,8 +11,8 @@
 #include "tree.h"
 #include "avl.h"
 #include "node.h"
+#include "Fatal.h"
 
-bool AVL;
 void setBalance(node *n){
     if(n->left != NULL)
         n->lheight = n->left->height;
@@ -158,13 +158,17 @@ void delFixup(tree *t,node *x){
     }
 }
 bool avlDelete(tree *t,char *key){
+    if(t->root == NULL)
+        Fatal("Delete from Empty Tree\n");
     node *w = findNode(t,key);
     if(w != NULL){
         node *z = swapToLeaf(t,w);
         delFixup(t,z);
         prune(t,z);
+        return true;
     }
-    return true;
+    else
+        return false;
 }
 bool avlInsert(tree *t,node *n){
     bool status = Insert(t,n);

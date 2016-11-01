@@ -1,3 +1,4 @@
+/* This file was given to us by Dr. Lusth */
 #include <stdio.h>
 #include <stdlib.h>  /* for exit, malloc, realloc */
 #include <ctype.h>   /* for isspace */

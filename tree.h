@@ -1,7 +1,7 @@
 /*******************************************************************
 *   tree.h
 *   Cameron Brock
-*   Programming Assignment 1 calculon
+*   Programming Assignment 2 trees
 *
 *   This program is entirely my own work
 *******************************************************************/
@@ -24,4 +24,8 @@ extern void printLevelOrder(tree *t,FILE *fp);
 extern node *findNode(tree *t,char *key);
 extern node *swapToLeaf(tree *t,node *n);
 extern void prune(tree *t,node *n);
+extern int getFreq(tree *t,char *key);
+extern int getNumberOfNodes(node *root);
+extern int getMinDepth(node *root);
+extern int getMaxDepth(node *root);
 #endif // TREE_H

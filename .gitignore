@@ -1,9 +1,11 @@
 *.o
 testing.dSYM
-trees.sSYM
+trees.dsSYM
+testing.c
 res
 res1
 test
 test1
 .cproject
 .project
+.WORKING

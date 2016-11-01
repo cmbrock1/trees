@@ -1,7 +1,7 @@
 /*******************************************************************
 *   node.c
 *   Cameron Brock
-*   Programming Assignment 1 calculon
+*   Programming Assignment 2 trees
 *
 *   This program is entirely my own work
 *******************************************************************/
@@ -55,6 +55,8 @@ bool isLeftChild(node *n){
         return false;
 }
 void displayNode(node *n,FILE *fp){
+	if(n == NULL)
+		return;
     fprintf(fp," ");
     if(isLeaf(n))
         fprintf(fp,"=");

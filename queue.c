@@ -1,7 +1,7 @@
 /*******************************************************************
 *   queue.c
 *   Cameron Brock
-*   Programming Assignment 1 calculon
+*   Programming Assignment 2 trees
 *
 *   This program is entirely my own work
 *******************************************************************/
@@ -15,6 +15,18 @@
 void initQueue(queue *q){
     q->head = q->tail = NULL;
 }
+void initQNode(qNode *n){
+    n->data = NULL;
+    n->next = NULL;
+}
+qNode *newQNode(node *data){
+    qNode *n;
+    if ((n = (qNode *)malloc(sizeof(qNode))) == 0)
+        Fatal("out of memory\n");
+    initQNode(n);
+    n->data = data;
+    return n;
+}
 queue *newQueue(void){
     queue *q;
     if ((q = (queue *)malloc(sizeof(queue))) == 0)
@@ -23,7 +35,7 @@ queue *newQueue(void){
     return q;
 }
 int EmptyQueue(queue *q){
-    if(q->head == NULL)
+    if(q->head == NULL && q->tail == NULL)
         return true;
     else
         return false;
@@ -33,25 +45,27 @@ int FullQueue(queue *q){
 }
 void Enqueue(queue *q,node *n)
     {
-    if (q->head == NULL)
+    if (q->head == NULL && q->tail == NULL)
         {
-        q->head = n;
+        q->head = newQNode(n);
         q->tail = q->head;
         }
     else
         {
-        q->tail->next = n;
+        q->tail->next = newQNode(n);
         q->tail = q->tail->next;
         }
     }
 
 node *Dequeue(queue *q)
     {
-    node *temp = q->head;
-    q->head = q->head->next;
-    if (q->head == NULL)
-        q->tail = NULL;
-    return temp;
+    	if(EmptyQueue(q))
+            Fatal("Dequeue Empty Queue\n");
+    	node *temp = q->head->data;
+    	q->head = q->head->next;
+    	if (q->head == NULL)
+    		q->tail = NULL;
+    	return temp;
     }
 // void Enqueue(queue *q,node *n){
 //     node *temp = newNode();
@@ -73,35 +87,35 @@ node *Dequeue(queue *q)
 //         return temp;
 //     }
 // }
-void DestroyQueue(queue *q){
-    if(!EmptyQueue(q)){
-        node *temp = q->head;
-        while(temp != NULL){
-            temp = q->head->next;
-            free(q->head);
-            q->head = temp;
-        }
-    }
-}
-void printQueue(queue *q,FILE *fp){
-    if(q == NULL)
-        return;
-    node *temp = q->head;
-    if(q->head == NULL)
-        return;
-    displayNode(temp,fp);
-    while(temp->next != NULL){
-        temp = temp->next;
-        displayNode(temp,fp);
-    }
-    printf("\n");
-}
-int queueSize(queue *q){
-    int i = 0;
-    node *temp = q->head;
-    while(temp != NULL){
-        i++;
-        temp = temp->next;
-    }
-    return i;
-}
+// void DestroyQueue(queue *q){
+//     if(!EmptyQueue(q)){
+//         qNode *temp = q->head;
+//         while(temp != NULL){
+//             temp = q->head->next;
+//             free(q->head);
+//             q->head = temp;
+//         }
+//     }
+// }
+// void printQueue(queue *q,FILE *fp){
+//     if(q == NULL)
+//         return;
+//     qNode *temp = q->head;
+//     if(q->head == NULL)
+//         return;
+//     displayNode(temp,fp);
+//     while(temp->next != NULL){
+//         temp = temp->next;
+//         displayNode(temp,fp);
+//     }
+//     printf("\n");
+// }
+// int queueSize(queue *q){
+//     int i = 0;
+//     qNode *temp = q->head;
+//     while(temp != NULL){
+//         i++;
+//         temp = temp->next;
+//     }
+//     return i;
+// }

@@ -1,16 +1,20 @@
 /*******************************************************************
 *   queue.h
 *   Cameron Brock
-*   Programming Assignment 1 calculon
+*   Programming Assignment 2 trees
 *
 *   This program is entirely my own work
 *******************************************************************/
 #ifndef QUEUE_H
 #define QUEUE_H
 #include "node.h"
+typedef struct qNode{
+    node *data;
+    struct qNode *next;
+}qNode;
 typedef struct queue{
-    node *head;
-    node *tail;
+    qNode *head;
+    qNode *tail;
 }queue;
 
 extern queue *newQueue();

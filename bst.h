@@ -1,7 +1,7 @@
 /*******************************************************************
 *   bst.h
 *   Cameron Brock
-*   Programming Assignment 1 calculon
+*   Programming Assignment 2 trees
 *
 *   This program is entirely my own work
 *******************************************************************/
