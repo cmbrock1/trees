@@ -206,10 +206,14 @@ void processCommands(FILE *fp,tree *t){
                 INSERT = false;
             }
             else if(DELETE == true){
-                if(AVL)
-                    avlDelete(t,token);
-                else
-                    bstDelete(t,token);
+                if(AVL){
+                    if(avlDelete(t,token) == false)
+                        fprintf(stderr,"%s is not in the tree\n",token);
+                    }
+                else {
+                    if(bstDelete(t,token) == false)
+                        fprintf(stderr,"%s is not in the tree\n",token);
+                    }
                 DELETE = false;
             }
             else if(FREQUENCY == true){

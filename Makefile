@@ -19,11 +19,13 @@ test: trees
 	@echo
 	cat commands
 	@echo
-	timeout 2s trees -b data commands
+	#timeout 2s
+	trees -b data commands
 	@echo
 	@echo testing AVL
 	@echo
-	timeout 2s trees -a data commands
+	#timeout 2s
+	trees -a data commands
 
 trees.o: trees.c scanner.h tree.h Fatal.h avl.h bst.h
 	${CC} ${CFLAGS} trees.c
@@ -50,4 +52,4 @@ scanner.o: scanner.c scanner.h
 	${CC} ${CFLAGS} scanner.c
 
 clean:
-	rm -r ${OBJECTS} ${BINARYS} trees.dSYM
+	rm ${OBJECTS} ${BINARYS}
