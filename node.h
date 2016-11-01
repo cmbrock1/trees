@@ -12,10 +12,16 @@ typedef struct node{
     struct node *next;
     struct node *left;
     struct node *right;
+    struct node *parent;
+    int freq;
+    int height;
+    int lheight;
+    int rheight;
     char *key;
 }node;
 
 extern node *newNode(void);
+extern node *newTreeNode(char *key);
 extern void displayNode(node *n,FILE *fp);
 
 #endif // NODE_H

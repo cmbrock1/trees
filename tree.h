@@ -8,7 +8,8 @@
 #ifndef TREE_H
 #define TREE_H
 #include <stdbool.h>
-#include "tree.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "node.h"
 typedef struct tree{
     node *root;
@@ -18,6 +19,9 @@ extern tree *newTree();
 extern bool EmptyTree(tree *t);
 extern node *Search(tree *t,char *key);
 extern bool Insert(tree *t,node *newNode);
-extern bool Delete(tree *t,char *key);
 extern void displayTree(tree *t);
+extern void printLevelOrder(tree *t,FILE *fp);
+extern node *findNode(tree *t,char *key);
+extern node *swapToLeaf(tree *t,node *n);
+extern void prune(tree *t,node *n);
 #endif // TREE_H

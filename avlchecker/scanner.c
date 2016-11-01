@@ -11,33 +11,33 @@
  *           - written by John C. Lusth
  *           - in general, the functions return what is implied by their names
  *
- *    readInt(FILE *)
+ *    readInt(FILE *) 
  *      - wrapper for fscanf(fp,"%d")
  *      - returns 0 if end of file, but feof will subsequently return true
  *      - usage example: int x = readInt(stdin);
- *    readReal(FILE *)
+ *    readReal(FILE *) 
  *      - wrapper for fscanf(fp,"%lf")
  *      - returns a double
  *      - returns 0.0 if read fails due to end of file,
  *        but feof will subsequently return true
  *      - usage example: double x = readReal(stdin);
- *    readChar(FILE *)
+ *    readChar(FILE *) 
  *      - wrapper for fscanf(fp," %c")
  *      - returns a non-whitespace character
  *      - returns 0 if end of file; feof will subsequently return true
  *      - usage example: char x = readChar(stdin);
- *    readRawChar(FILE *fp)
+ *    readRawChar(FILE *fp) 
  *      - wrapper for fscanf(fp,"%c")
  *      - returns a character, whether whitespace or non-whitespace
  *      - returns 0 if end of file; feof will subsequently return true
  *      - usage example: char x = readRawChar(stdin);
- *    readToken(FILE *fp)
+ *    readToken(FILE *fp) 
  *      - safe version of fscanf(fp,"%s")
  *      - returns a malloc'd string
  *        the caller should free the returned string
  *      - returns 0 if end of file; feof will subsequently return true
  *      - usage example: char *x = readToken(stdin);
- *    readString(FILE *fp)
+ *    readString(FILE *fp) 
  *      - reads in a double quoted string
  *      - returns a malloc'd string; the quotation marks are not included
  *        the caller should free the returned string
@@ -48,16 +48,16 @@
  *      - any preceeding whitespace is consumed, but the non-whitespace
  *        character that was read is returned to the input stream
  *      - usage example: if (stringPending(stdin)) x = readString(stdin);
- *    readLine(FILE *fp)
+ *    readLine(FILE *fp) 
  *      - reads in a line or remainder of a line
  *      - returns a malloc'd string; the newline is not included
  *        the caller should free the returned string
  *      - returns 0 if end of file; feof will subsequently return true
  *      - usage example: char *x = readLine(stdin);
- *    allocate(size_t size)
+ *    allocate(size_t size) 
  *      - wrapper for malloc that will generate an out of memory error
  *      - usage example: int *x = (int *) allocate(sizeof(int) * count);
- *    reallocate(void *items,size_t size)
+ *    reallocate(void *items,size_t size) 
  *      - wrapper for realloc that will generate an out of memory error
  *      - usage example: x = (int *) reallocate(x,sizeof(int) * count);
  */
@@ -188,7 +188,7 @@ readString(FILE *fp)
             fprintf(stderr,"no closing double quote\n");
             exit(6);
             }
-        if (index > size - 2)
+        if (index > size - 2) 
             {
             ++size;
             buffer = reallocateMsg(buffer,size,"readString");
@@ -263,7 +263,7 @@ readLine(FILE *fp)
     int ch,index;
     char *buffer;
     int size = 512;
-
+    
     ch = fgetc(fp);
     if (ch == EOF) return 0;
 
@@ -391,3 +391,4 @@ reallocateMsg(void *s,size_t size,char *where)
 
     return t;
     }
+

@@ -1,2 +1,9 @@
 *.o
 testing.dSYM
+trees.sSYM
+res
+res1
+test
+test1
+.cproject
+.project
